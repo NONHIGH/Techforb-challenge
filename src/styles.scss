@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+
+@font-face {
+    font-family: 'Fragment Mono';
+    src: url('./styles/fonts/FragmentMono-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Fragment Mono Italic';
+    src: url('./styles/fonts/FragmentMono-Italic.ttf');
+}
+
+*{
+    font-family: 'Fragment Mono';
+    
+}
+html, body{
+    margin: 0;
+    padding: unset;
+    box-sizing: border-box;
+}
