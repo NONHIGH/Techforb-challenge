@@ -24,6 +24,7 @@
             padding: .3rem;
             display: inline;
             font-size: 2rem;
+            font-weight: bolder;
             color: $secondary;
             b{
                 color: $primary;
@@ -32,6 +33,17 @@
     }
     &__section2{
         background:#341e9fd5;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        a{
+            text-align: center;
+            color: #dce8f6c8;
+            transition: color .2s;
+            &:hover{
+                color: #dce8f6;
+            }
+        }
     }
 
 }

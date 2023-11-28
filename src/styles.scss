@@ -12,10 +12,16 @@
 
 *{
     font-family: 'Fragment Mono';
-    
 }
 html, body{
     margin: 0;
     padding: unset;
     box-sizing: border-box;
+    font-size: 16px;
 }
+
+a{
+    color: unset;
+    text-decoration: unset;
+}
+
