@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./styles/base.scss";
+
+@font-face {
+    font-family: 'Fragment Mono';
+    src: url('./styles/fonts/FragmentMono-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Fragment Mono Italic';
+    src: url('./styles/fonts/FragmentMono-Italic.ttf');
+}
+
+*{
+    font-family: 'Fragment Mono';
+    &::selection{
+        background: $primary-1;
+    }
+}
+html, body{
+    margin: 0;
+    padding: unset;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+a{
+    color: unset;
+    text-decoration: unset;
+}
+
+@keyframes fade-to-left {
+    0%{
+        transform: translateX(-30px);
+        opacity: 0;
+
+    }
+    100%{
+        transform: translate(0px);
+        opacity: 1;
+
+    }
+}

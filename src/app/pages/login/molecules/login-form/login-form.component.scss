@@ -1,0 +1,34 @@
+@import "../../../../../styles/base.scss";
+
+.LoginForm{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    &__field{
+        @include fieldInput();
+        &-Errors{
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            gap: .3rem;
+            align-items: center;
+            background: $white-1;
+            margin-top: .5rem;
+            border-radius: .5rem;
+            padding: .6rem;
+            li{
+                margin: 0;
+                border-radius: .5rem;
+                text-wrap: balance;
+                color: $danger;
+                width: 70%;
+            }
+        }
+    }
+    button{
+
+        @include buttonForm();
+    }
+}
+
