@@ -1,15 +1,113 @@
-<form class="LoginForm">
-    <fieldset class="LoginForm__field">
-        <label for="type-document">Tipo de documento</label>
-        <input type="text" placeholder="DNI" name="type-document" id="type-document">
-    </fieldset>
-    <fieldset class="LoginForm__field">
-        <label for="document-number">Número de documento</label>
-        <input type="text" placeholder="95022032" name="document-number" id="document-number">
-    </fieldset>
-    <fieldset class="LoginForm__field">
-        <label for="clue">Clave</label>
-        <input type="password" placeholder="*****" name="clue" id="clue">
-    </fieldset>
-    <button type="submit">Ingresar</button>
+<form [formGroup]="loginForm" class="LoginForm" (ngSubmit)="onSubmit()">
+  <fieldset class="LoginForm__field">
+    <label for="type_document">Tipo de documento</label>
+    <input
+      type="text"
+      placeholder="DNI / Pasaporte"
+      name="type_document"
+      id="type_document"
+      formControlName="type_document"
+    />
+    @if (loginForm.get('type_document')?.touched &&
+    loginForm.get('type_document')?.errors) {
+    <ul class="LoginForm__field-Errors">
+      <li
+        *ngIf="loginForm.get('type_document')?.errors?.['required']"
+        class="LoginForm__field-Errors-error"
+      >
+        Este campo es requerido
+      </li>
+      <li
+        *ngIf="(loginForm.get('type_document')?.errors?.['minlength'])"
+        class="LoginForm__field-Errors-error"
+      >
+        El tipo de documento debe tener un mínimo de
+        {{loginForm.get('type_document')?.errors?.['minlength'].requiredLength}}
+      </li>
+      <li *ngIf="(loginForm.get('type_document')?.errors?.['maxlength'])">
+        El tipo de documento debe tener un máximo de
+        {{loginForm.get('type_document')?.errors?.['maxlength'].requiredLength}}
+      </li>
+      <li
+        *ngIf="(loginForm.get('type_document')?.errors?.['pattern'])"
+        class="LoginForm__field-Errors-error"
+      >
+        El tipo de documento debe ser DNI o Pasaporte
+      </li>
+    </ul>
+    }
+  </fieldset>
+  <fieldset class="LoginForm__field">
+    <label for="document_number">Número de documento</label>
+    <input
+      type="text"
+      placeholder="95022032"
+      name="document_number"
+      id="document_number"
+      formControlName="document_number"
+    />
+    @if (loginForm.get('document_number')?.touched &&
+    loginForm.get('document_number')?.errors) {<ul class="LoginForm__field-Errors">
+      <li
+        *ngIf="loginForm.get('document_number')?.errors?.['required']"
+        class="LoginForm__field-Errors-error"
+      >
+        Este campo es requerido
+      </li>
+      <li
+        *ngIf="loginForm.get('document_number')?.errors?.['minlength']"
+        class="LoginForm__field-Errors-error"
+      >
+        El número de documento debe tener un mínimo de
+        {{ loginForm.get('document_number')?.errors?.['minlength'].requiredLength }}
+        caracteres
+      </li>
+      <li
+        *ngIf="loginForm.get('document_number')?.errors?.['maxlength']"
+        class="LoginForm__field-Errors-error"
+      >
+        El número de documento debe tener un máximo de
+        {{ loginForm.get('document_number')?.errors?.['maxlength'].requiredLength }}
+        caracteres
+      </li>
+    </ul>}
+  </fieldset>
+  <fieldset class="LoginForm__field">
+    <label for="clue">Clave</label>
+    <input
+      type="password"
+      placeholder="**********"
+      name="clue"
+      id="clue"
+      formControlName="clue"
+    />
+
+    @if (loginForm.get('clue')?.touched &&
+    loginForm.get('clue')?.errors) {<ul class="LoginForm__field-Errors">
+      <li
+        *ngIf="loginForm.get('clue')?.errors?.['required']"
+        class="LoginForm__field-Errors-error"
+      >
+        Este campo es requerido
+      </li>
+      <li
+        *ngIf="loginForm.get('clue')?.errors?.['minlength']"
+        class="LoginForm__field-Errors-error"
+      >
+        La clave debe tener un mínimo de
+        {{ loginForm.get('clue')?.errors?.['minlength'].requiredLength }}
+        caracteres
+      </li>
+      <li
+        *ngIf="loginForm.get('clue')?.errors?.['maxlength']"
+        class="LoginForm__field-Errors-error"
+      >
+        La clave debe tener un máximo de
+        {{ loginForm.get('clue')?.errors?.['maxlength'].requiredLength }}
+        caracteres
+      </li>
+    </ul>}
+  </fieldset>
+  <button type="submit" [disabled]="loginForm.invalid">Ingresar</button>
 </form>
+<p>{{ name }} holi</p>

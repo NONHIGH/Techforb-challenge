@@ -9,6 +9,9 @@ import { LoginFormComponent } from './molecules/login-form/login-form.component'
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent  {
+
+  
+
 
 }

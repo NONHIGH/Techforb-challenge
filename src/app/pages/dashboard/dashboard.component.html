@@ -1,1 +1,5 @@
-<p>dashboard works!</p>
+@for (item of routes; track $index) {
+    @if (!item.path?.includes("**")) {
+        <a class="link" style="margin: 3rem;display: block;" routerLink="/{{item?.path}}">{{item.path}}</a>
+    }
+}

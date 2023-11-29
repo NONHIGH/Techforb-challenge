@@ -1,4 +1,4 @@
-@import "../../../../../styles/variables.scss";
+@import "../../../../../styles/base.scss";
 
 .LoginForm{
     display: flex;
@@ -6,46 +6,29 @@
     gap: 2rem;
     align-items: center;
     &__field{
-
-        border: unset;
-        margin: unset;
-        padding: unset;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-
-        label{
-            color: #ffffff;
-            text-align: start;
-            font-weight: 900;
-            line-height: 3rem;
-            width: 67%;
-        }
-        input{
-            background-color: unset;
-            border: none;
-            outline: none;
-            width: 67%;
-            &::placeholder{
-                font-weight: lighter;
-                
+        @include fieldInput();
+        &-Errors{
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            gap: .3rem;
+            align-items: center;
+            background: $white-1;
+            margin-top: .5rem;
+            border-radius: .5rem;
+            padding: .6rem;
+            li{
+                margin: 0;
+                border-radius: .5rem;
+                text-wrap: balance;
+                color: $danger;
+                width: 70%;
             }
-            border-bottom: 1px solid white;
         }
     }
     button{
 
-        width: 67%;
-        border:unset;
-        border-radius: 3rem;
-        padding: 1rem;
-        font-weight: 700;
-        text-align: center;
-        cursor: pointer;
-        transition: background .2s;
-        &:hover{
-            background: #ffffff93;
-        }
+        @include buttonForm();
     }
 }
+

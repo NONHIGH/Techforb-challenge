@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./styles/base.scss";
 
 @font-face {
     font-family: 'Fragment Mono';
@@ -12,6 +13,9 @@
 
 *{
     font-family: 'Fragment Mono';
+    &::selection{
+        background: $primary-1;
+    }
 }
 html, body{
     margin: 0;
@@ -25,3 +29,15 @@ a{
     text-decoration: unset;
 }
 
+@keyframes fade-up {
+    0%{
+        transform: translateX(-30px);
+        opacity: 0;
+
+    }
+    100%{
+        transform: translate(0px);
+        opacity: 1;
+
+    }
+}

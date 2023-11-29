@@ -8,11 +8,12 @@
     height: 100%;
     width: 100%;
     display: flex;
+    animation: fade-up 2s;
 
     &__section1, &__section2{
         width: 100%;
         min-height: 100vh;
-        max-height: 100vh;
+        max-height: 200vh;
     } 
 
     &__section1{
@@ -32,11 +33,23 @@
         }
     }
     &__section2{
-        background:#341e9fd5;
+        background:$primary-1;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+
+        justify-content: space-between;
+
+        &-Header{
+            text-align: center;
+            img{
+                width: 9rem;
+                height: auto;
+            }
+        }
+
         a{
+            animation: fade-up 2s;
+            padding-bottom: 1rem;
             text-align: center;
             color: #dce8f6c8;
             transition: color .2s;
