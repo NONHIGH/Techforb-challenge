@@ -16,7 +16,6 @@ import {
 })
 export class LoginFormComponent {
   protected loginForm!: FormGroup;
-  public name?: any = this.loginForm?.get('name');
 
   constructor(private readonly formBuilder: FormBuilder) {
     this.loginForm = this.formBuilder.group({
@@ -31,13 +30,19 @@ export class LoginFormComponent {
       ],
       document_number: [
         '',
-        [Validators.minLength(8), Validators.maxLength(8), Validators.required],
+        [
+          Validators.minLength(8),
+          Validators.maxLength(8),
+          Validators.pattern(/^\d{8}$/),
+          Validators.required,
+        ],
       ],
       clue: [
         '',
         [
           Validators.minLength(8),
           Validators.maxLength(40),
+          Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/),
           Validators.required,
         ],
       ],
