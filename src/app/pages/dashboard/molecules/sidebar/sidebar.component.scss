@@ -1,0 +1,32 @@
+.SideBar{
+    border-top: .1rem solid #00a;
+    border-right: .1rem solid #00a;
+    border-top-right-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    max-width: 18rem;
+    min-height: 100dvh;
+    &__Header{
+        margin: 1rem;
+        display: flex;
+        justify-content: center;
+        img{
+            
+            width: 50%;
+        }
+    }
+    &__List{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        min-height: 70vh;
+        padding: 0;
+        margin: 0;
+        &-item{
+            list-style: none;
+            text-align: center;
+        }
+
+    }
+    
+}

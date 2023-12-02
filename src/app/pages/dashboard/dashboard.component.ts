@@ -1,16 +1,15 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { routes } from '../../app.routes';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { SidebarComponent } from './molecules/sidebar/sidebar.component';
+
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink],
+  imports: [CommonModule, SidebarComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
-  protected routes = routes;
-
+  
 }
