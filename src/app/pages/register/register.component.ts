@@ -5,6 +5,7 @@ import { RouterLink, Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 import { clue, document_number, type_document, email, last_name, name } from '../../constans'
 import { AuthRegister } from '../../interfaces/Auth.interface';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-register',
@@ -20,6 +21,7 @@ export class RegisterComponent {
     private readonly formBuilder: FormBuilder,
     private readonly authService: AuthService,
     private readonly router: Router,
+    private readonly cookiesService: CookieService
     ) {
     this.registerForm = this.formBuilder.group({
       name: ['', [Validators.pattern(/^[A-Za-z\s]+$/), Validators.required]],
@@ -70,11 +72,25 @@ export class RegisterComponent {
         lastname,
         type_document:documentType
       }
-    const response = this.authService.register(registerForm).subscribe({
-      next: value=> this.router.navigate(['/dashboard']),
-      error: err => alert("error" + JSON.stringify(err)),
-      complete: () => console.log("complete call to api")
-    })
+      const res = this.authService.register(registerForm).subscribe({
+        next: value => {
+          this.cookiesService.set('user',value.toString());
+          this.router.navigate(['/dashboard']);
+      },
+        error: err => {
+          const status = err.status;
+          if(registerForm.type_document == "DNI"){
+            status == 400 && alert("Este dni ya esta en uso");
+          }else{
+            status == 400 && alert("Este pasaporte ya esta en uso");
+          }
+          status == 401 && alert("Credenciales invalidas");
+          status == 500 && alert("Error inesperado, llame al servicio de atención al cliente: numero ficticio");
+          return;
+        }
+        ,
+        complete: () => console.log('se completo la peticion')
+      })
     
   }
 
