@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormBuilder,
@@ -16,6 +16,8 @@ import {
 })
 export class LoginFormComponent {
   protected loginForm!: FormGroup;
+
+  @Output() form = new EventEmitter<FormGroup>(); 
 
   constructor(private readonly formBuilder: FormBuilder) {
     this.loginForm = this.formBuilder.group({
@@ -50,6 +52,6 @@ export class LoginFormComponent {
   }
 
   onSubmit(): void {
-    //enviar llamado al servicio y realizar acciones ante una invalides de los datos
+    this.form?.emit(this.loginForm);
   }
 }
