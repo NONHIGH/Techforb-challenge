@@ -13,6 +13,7 @@ export const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     canActivate: [authenticationGuard],
+    loadChildren: ()=> import('./pages/dashboard/dashboard.routes').then((m)=>m.routes)
   },
   {
     path: 'login',

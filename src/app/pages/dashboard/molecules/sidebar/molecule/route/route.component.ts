@@ -7,12 +7,34 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterLink, RouterLinkActive],
   template: `
-    <a class="Container" [routerLink]="path">
+    <a class="Container" [routerLink]="path" routerLinkActive="onRoute" [routerLinkActiveOptions]="{exact: true}">
       <img class="Container-icon" [src]="icon" [alt]="'navegar a '+label">
       {{ label }}
     </a>
   `,
-  styleUrl: './route.component.scss',
+  styles: `
+  @import "../../../../../../../styles/base.scss";
+  .Container {
+    margin-left:3rem;
+    display: flex;
+    align-items:center;
+    gap: 1rem;
+    padding: .5rem;
+    
+    img{
+      width: auto;
+      max-width: 20%;
+    }
+  }
+  .onRoute{
+    margin-left:14%;
+    img{
+      border-radius: 50%;
+      background: $primary-1;
+      padding: .5rem;
+    }
+  }
+  `
 })
 
 export class RouteComponent {
