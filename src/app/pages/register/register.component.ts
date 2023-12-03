@@ -74,7 +74,9 @@ export class RegisterComponent {
       }
       const res = this.authService.register(registerForm).subscribe({
         next: value => {
-          this.cookiesService.set('user',value.toString());
+          console.log(value);
+          
+          // this.cookiesService.set('user',value.toString());
           this.router.navigate(['/dashboard']);
       },
         error: err => {

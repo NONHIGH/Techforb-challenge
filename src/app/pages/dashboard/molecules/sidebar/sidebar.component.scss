@@ -1,30 +1,45 @@
+@import "../../../../../styles.scss";
+
 .SideBar{
-    border-top: .1rem solid #00a;
-    border-right: .1rem solid #00a;
+    position: sticky;
+    top: 0;
+    border-top: .1rem solid $primary;
+    border-right: .1rem solid $primary;
     border-top-right-radius: 1rem;
     display: flex;
     flex-direction: column;
-    max-width: 18rem;
+    min-width: 20rem;
+    max-width: 30rem;
     min-height: 100dvh;
     &__Header{
         margin: 1rem;
         display: flex;
         justify-content: center;
         img{
-            
-            width: 50%;
+            width: auto;
+            max-width: 50%;
         }
     }
     &__List{
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        min-height: 70vh;
+        min-height: 70dvh;
+        max-height: 140dvh;
         padding: 0;
         margin: 0;
+        gap: 1rem;
         &-item{
             list-style: none;
             text-align: center;
+            opacity: .9;
+            border-radius: 1.5rem;
+            transition: all 2s;
+            &:hover{
+                border: 1px solid $primary;
+                opacity: 1;
+
+            }
         }
 
     }
