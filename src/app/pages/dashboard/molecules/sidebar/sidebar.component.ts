@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouteComponent } from './molecule/route/route.component';
 import { Route } from '../../../../interfaces/route.interface';
+import { AuthService } from '../../../../services/auth/auth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,7 +13,17 @@ import { Route } from '../../../../interfaces/route.interface';
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
-  
+
+
+
+  constructor(
+    private readonly authService: AuthService,
+    private readonly cookies: CookieService
+  ){
+    // console.log(this.cookies.getAll(), "<==== las cookies");
+    
+  }
+    
   routesDashboard: Route[]= [
     {
       icon: this.getIconByName('home'),
@@ -53,12 +65,12 @@ export class SidebarComponent {
       path: "help",
       label: "Ayuda"
     },
-    {
-      icon: this.getIconByName('logout'),
-      path: "logout",
-      label: "Cerrar sesión"
-    },
   ]
+
+  logOut(value:boolean){
+    console.log(value);
+    this.authService.logOut();
+  }
 
   getIconByName(name_icon: string):string{
     return `../../../../../assets/svg/${name_icon}.svg`

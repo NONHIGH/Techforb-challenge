@@ -12,5 +12,12 @@
       />
     </li>
     }
+    <li class="SideBar__List-item">
+      <app-route
+        [icon]="getIconByName('logout')"
+        label="Cerrar sesión"
+        (action)="logOut($event)"
+      />
+    </li>
   </ul>
 </nav>

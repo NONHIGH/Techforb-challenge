@@ -1,14 +1,20 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment.prod';
 import { Observable, map } from 'rxjs';
 import { AuthLogin, AuthRegister } from '../../interfaces/Auth.interface';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private readonly httpClient: HttpClient) {}
+  constructor(
+    private readonly httpClient: HttpClient,
+    private readonly cookiesService: CookieService,
+    private readonly routerNavigation: Router
+    ) {}
   urlBack: string = environment.apiBackend || 'http://localhost:8080/';
 
   login(loginForm: AuthLogin): Observable<String> {
@@ -40,4 +46,11 @@ export class AuthService {
         })
       );
   }
+
+  logOut(){
+    this.cookiesService.delete("user");
+    
+    this.routerNavigation.navigate(['/dashboard'])
+  }
+
 }

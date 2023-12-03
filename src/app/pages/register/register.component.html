@@ -9,7 +9,7 @@
         <h2 class="Register__Form-title">Registrate</h2>
         <fieldset class="Register__Form-field">
             <label for="name">Nombres</label>
-            <input type="text" placeholder="Juan ..." name="name" id="name" formControlName="name" />
+            <input type="text" placeholder="Juan ..." name="name" id="name" formControlName="name" autocomplete="name" />
             @if (registerForm.get('name')?.touched &&
             registerForm.get('name')?.errors){
 
@@ -44,7 +44,7 @@
 
         <fieldset class="Register__Form-field">
             <label for="email">Correo Electrónico</label>
-            <input type="text" placeholder="correo@example.com" name="email" id="email" formControlName="email" />
+            <input type="text" placeholder="correo@example.com" name="email" id="email" formControlName="email" autocomplete="email" />
 
             @if (registerForm.get('email')?.touched &&
             registerForm.get('email')?.errors) {

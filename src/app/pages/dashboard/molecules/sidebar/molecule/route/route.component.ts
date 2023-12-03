@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterLink, RouterLinkActive],
   template: `
-    <a class="Container" [routerLink]="path" routerLinkActive="onRoute" [routerLinkActiveOptions]="{exact: true}">
+    <a class="Container" [routerLink]="path ? path : '/dashboard'" routerLinkActive="onRoute" [routerLinkActiveOptions]="{exact: true}" (click)="emitAction()">
       <img class="Container-icon" [src]="icon" [alt]="'navegar a '+label">
       {{ label }}
     </a>
@@ -41,5 +41,16 @@ export class RouteComponent {
   @Input() icon?: string;
   @Input() label?: string;
   @Input() path?: string;
+  
+  @Output() action: EventEmitter<boolean> = new EventEmitter<any>();
+
+  
   constructor() {}
+
+  emitAction(){
+    if(!this.path){
+      this.action.emit(true);
+    }
+  }
+
 }

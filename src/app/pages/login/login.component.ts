@@ -35,7 +35,6 @@ export class LoginComponent  {
       
       const res = this.authService.login(loginForm).subscribe({
         next: value => {
-          this.cookiesService.set('user',value.toString());
           this.router.navigate(['/dashboard']);
       },
         error: err => {
