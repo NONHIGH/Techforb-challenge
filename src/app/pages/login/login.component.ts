@@ -35,6 +35,9 @@ export class LoginComponent  {
       
       const res = this.authService.login(loginForm).subscribe({
         next: value => {
+          const expirationCookie = new Date();
+          expirationCookie.setDate(expirationCookie.getDate() + 7);
+          this.cookiesService.set("user", value+"", expirationCookie, '/', undefined, false, 'None');
           this.router.navigate(['/dashboard']);
       },
         error: err => {

@@ -74,9 +74,9 @@ export class RegisterComponent {
       }
       const res = this.authService.register(registerForm).subscribe({
         next: value => {
-          console.log(value);
-          
-          // this.cookiesService.set('user',value.toString());
+          const expirationCookie = new Date();
+          expirationCookie.setDate(expirationCookie.getDate() + 7);
+          this.cookiesService.set("user", value+"", expirationCookie, '/', undefined, false, 'None');
           this.router.navigate(['/dashboard']);
       },
         error: err => {
