@@ -1,0 +1,94 @@
+@import "../../../../../../../styles.scss";
+
+.Card {
+  background: linear-gradient(to left, $primary, $primary-1, $primary-1);
+  position: relative;
+  color: $white-1;
+  text-shadow: 1px 1px 2px #000;
+  border-radius: 2rem;
+  border: 1px solid $primary;
+  padding: 2rem;
+  min-width: 19rem;
+  aspect-ratio: 17/9;
+  width: auto;
+  display: grid;
+  grid-template-areas:
+    "balance balance balance cardNumber cardNumber"
+    "balance balance balance cardNumber cardNumber"
+    "cardData cardData cardData cardNumber cardNumber"
+    "cardData cardData cardData cardNumber cardNumber";
+
+  &__balance {
+    grid-area: balance;
+  }
+  &__number {
+    grid-area: cardNumber;
+    display: flex;
+    align-items: center;
+    text-wrap: nowrap;
+    height: 100%;
+    font-size: 1.225rem;
+  }
+  &__Data {
+    grid-area: cardData;
+    display: flex;
+    justify-content: center;
+    margin-top: 40%;
+    &-headline,
+    &-due {
+      display: flex;
+      flex-direction: column;
+    }
+    &-headline {
+      max-width: 50%;
+    }
+  }
+
+  &__bar-1 {
+    position: absolute;
+    background-color: rgb(161, 41, 41);
+    z-index: -1;
+    height: 50%;
+    width: 10%;
+    bottom: 0;
+    border-top-left-radius: 3.85rem;
+    right: 15%;
+  }
+  &__bar-2 {
+    position: absolute;
+    background-color: rgb(158, 44, 44);
+    z-index: -1;
+    height: 60%;
+    border-bottom-right-radius: 2.5rem;
+    width: 15%;
+    bottom: 0;
+    border-top-left-radius: 5rem;
+    border-top-right-radius: 5rem;
+    right: 0;
+  }
+
+  &__circle {
+    display: flex;
+    width: 20%;
+    height: 20%;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    &-1,
+    &-2 {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+    &-1 {
+      background: #cebaba;
+      opacity: 0.5;
+      transform: translateX(15%);
+    }
+    &-2 {
+      background: #bcb6b6;
+      opacity: 0.5;
+      transform: translateX(-15%);
+    }
+  }
+}

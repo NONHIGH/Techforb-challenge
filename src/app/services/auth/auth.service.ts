@@ -49,8 +49,7 @@ export class AuthService {
 
   logOut(){
     this.cookiesService.delete("user");
-    
-    this.routerNavigation.navigate(['/dashboard'])
+    this.routerNavigation.navigate(['/login'])
   }
 
 }
