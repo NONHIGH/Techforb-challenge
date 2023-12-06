@@ -8,8 +8,9 @@
     border-top-right-radius: 1rem;
     display: flex;
     flex-direction: column;
-    min-width: 20rem;
-    max-width: 30rem;
+    align-items: center;
+    min-width: 15rem;
+    max-width: 15rem;
     min-height: 100dvh;
     &__Header{
         margin: 1rem;

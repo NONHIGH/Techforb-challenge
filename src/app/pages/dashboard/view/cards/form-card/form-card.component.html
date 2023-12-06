@@ -1,1 +1,143 @@
-<p>form-card works!</p>
+<form
+  [formGroup]="cardForm"
+  class="CardForm"
+  [class.display]="!showForm"
+  (ngSubmit)="onSubmit()"
+>
+  <h2 class="CardForm-title">Registrar Nueva Tarjeta</h2>
+  <fieldset class="CardForm-field">
+    <label for="dueDate">Fecha de Vencimiento</label>
+    <input
+      type="text"
+      placeholder="YYYY-MM"
+      name="dueDate"
+      id="dueDate"
+      formControlName="dueDate"
+    />
+    @if(cardForm.get('dueDate')?.touched && cardForm.get('dueDate')?.errors){
+    <ul class="CardForm-field-Errors">
+      <li
+        *ngIf="cardForm.get('dueDate')?.errors?.['required']"
+        class="CardForm-field-Errors-error"
+      >
+        Este campo es requerido
+      </li>
+      <li *ngIf="cardForm.get('dueDate')?.errors?.['pattern']" class="CardForm-field-Errors-error">
+      Ingrese una fecha válida (formato YYYY-MM)
+    </li>
+    </ul>
+    }
+  </fieldset>
+
+  <fieldset class="CardForm-field">
+    <label for="headline">Titular</label>
+    <input
+      type="text"
+      placeholder="Nombre del Titular"
+      name="headline"
+      id="headline"
+      formControlName="headline"
+    />
+
+    @if(cardForm.get('headline')?.touched && cardForm.get('headline')?.errors){
+    <ul class="CardForm-field-Errors">
+      <li
+        *ngIf="cardForm.get('headline')?.errors?.['required']"
+        class="CardForm-field-Errors-error"
+      >
+        Este campo es requerido
+      </li>
+      <li *ngIf="cardForm.get('headline')?.errors?.['pattern']" class="CardForm-field-Errors-error">
+        El titular debe contener solo letras
+      </li>
+    </ul>
+    }
+  </fieldset>
+
+  <fieldset class="CardForm-field">
+    <label for="numberCard">Número de Tarjeta</label>
+    <input
+      type="text"
+      placeholder="Ingrese el número de tarjeta"
+      name="numberCard"
+      id="numberCard"
+      formControlName="numberCard"
+    />
+
+    @if(cardForm.get('numberCard')?.touched &&
+    cardForm.get('numberCard')?.errors){
+    <ul class="CardForm-field-Errors">
+      <li
+        *ngIf="cardForm.get('numberCard')?.errors?.['required']"
+        class="CardForm-field-Errors-error"
+      >
+        Este campo es requerido
+      </li>
+      <li
+        *ngIf="cardForm.get('numberCard')?.errors?.['pattern']"
+        class="CardForm-field-Errors-error"
+      >
+        El número de tarjeta debe tener 16 dígitos
+      </li>
+    </ul>
+    }
+  </fieldset>
+
+  <fieldset class="CardForm-field">
+    <label for="securityCode">Código de Seguridad</label>
+    <input
+      type="text"
+      placeholder="CVC"
+      name="securityCode"
+      id="securityCode"
+      formControlName="securityCode"
+    />
+
+    @if(cardForm.get('securityCode')?.touched &&
+    cardForm.get('securityCode')?.errors){
+    <ul class="CardForm-field-Errors">
+      <li
+        *ngIf="cardForm.get('securityCode')?.errors?.['required']"
+        class="CardForm-field-Errors-error"
+      >
+        Este campo es requerido
+      </li>
+      <li
+        *ngIf="cardForm.get('securityCode')?.errors?.['pattern']"
+        class="CardForm-field-Errors-error"
+      >
+        El código de seguridad debe tener 3 dígitos
+      </li>
+    </ul>
+    }
+  </fieldset>
+
+  <fieldset class="CardForm-field">
+    <label for="balance">Saldo</label>
+    <input
+      type="text"
+      placeholder="Ingrese el saldo"
+      name="balance"
+      id="balance"
+      formControlName="balance"
+    />
+    @if(cardForm.get('balance')?.touched && cardForm.get('balance')?.errors){
+    <ul class="CardForm-field-Errors">
+      <li
+        *ngIf="cardForm.get('balance')?.errors?.['required']"
+        class="CardForm-field-Errors-error"
+      >
+        Este campo es requerido
+      </li>
+      <li
+        *ngIf="cardForm.get('balance')?.errors?.['pattern']"
+        class="CardForm-field-Errors-error"
+      >
+        Ingrese un saldo válido (puede contener hasta 2 decimales)
+      </li>
+    </ul>
+    }
+  </fieldset>
+
+  <button type="submit" [disabled]="cardForm.invalid">Registrar</button>
+</form>

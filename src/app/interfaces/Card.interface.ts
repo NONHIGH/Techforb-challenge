@@ -1,6 +1,6 @@
 export interface Card {
   balance: number;
-  dueDate: Date;
+  dueDate: string;
   headline: string;
   numberCard: number;
   securityCode: string;

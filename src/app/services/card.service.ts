@@ -47,11 +47,16 @@ export class CardService {
   addNewCard(newCard: Card) {
     const userId = this.userService.getUserId;
     console.log(userId);
+    console.log(this.apiBackend, this.userId);
+    
+    return this.httpClient
+      .post(`${this.apiBackend}/save/${userId}`, newCard, {withCredentials:true})
+      .pipe(
+        map((value: any) => {
+          console.log(value, 'mensaje del backend al crear la tarjeta');
 
-    if (!userId) {
-      return this.httpClient.post(`${this.apiBackend}${this.userId}`, newCard);
-    }
-
-    return alert('el id del usuario es indefinido');
+          return value;
+        })
+      );
   }
 }
