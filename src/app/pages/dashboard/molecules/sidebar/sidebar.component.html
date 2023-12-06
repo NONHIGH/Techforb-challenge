@@ -3,7 +3,7 @@
     <img src="../../../../../assets/unicomer.svg" alt="unicomer-logo" />
   </header>
   <ul class="SideBar__List">
-    @for (route of routesDashboard; track $index) {
+    @for (route of routesDashboard; track route.label) {
     <li class="SideBar__List-item">
       <app-route
         [icon]="route.icon"

@@ -1,7 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.prod';
-import { Observable, map } from 'rxjs';
+import { Observable, catchError, map } from 'rxjs';
 import { AuthLogin, AuthRegister } from '../../interfaces/Auth.interface';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
@@ -19,7 +19,7 @@ export class AuthService {
 
   login(loginForm: AuthLogin): Observable<String> {
     return this.httpClient
-      .post<Observable<String>>(`${this.urlBack}auth/login`, loginForm, {
+      .post<Observable<String | any>>(`${this.urlBack}auth/login`, loginForm, {
         observe: 'response',
         withCredentials: true,
       })

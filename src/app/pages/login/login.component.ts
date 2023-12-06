@@ -30,14 +30,14 @@ export class LoginComponent  {
       const loginForm : AuthLogin = {
         password,
         document_number:numberDocument,
-        type_document: documentType 
+        type_document: documentType.toUpperCase()
       }
       
       const res = this.authService.login(loginForm).subscribe({
         next: value => {
           const expirationCookie = new Date();
           expirationCookie.setDate(expirationCookie.getDate() + 7);
-          this.cookiesService.set("user", value+"", expirationCookie, '/', undefined, false, 'None');
+          this.cookiesService.set("user", value+"", expirationCookie, '/', undefined, false);
           this.router.navigate(['/dashboard']);
       },
         error: err => {

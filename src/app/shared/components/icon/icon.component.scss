@@ -1,0 +1,13 @@
+.Icon{
+    display: flex;
+    &__image{
+        border-radius: 50%;
+        border: 1px solid grey;
+        padding: .8rem;
+        width: 1rem;
+    }
+}
+
+.Submenu{
+    // background: blue;
+}

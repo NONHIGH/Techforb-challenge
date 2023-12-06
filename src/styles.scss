@@ -29,6 +29,10 @@ a{
     text-decoration: unset;
 }
 
+li{
+    list-style: none;
+}
+
 @keyframes fade-to-left {
     0%{
         transform: translateX(-30px);

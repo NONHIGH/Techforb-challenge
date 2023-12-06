@@ -20,8 +20,6 @@ export class SidebarComponent {
     private readonly authService: AuthService,
     private readonly cookies: CookieService
   ){
-    // console.log(this.cookies.getAll(), "<==== las cookies");
-    
   }
     
   routesDashboard: Route[]= [
@@ -68,7 +66,6 @@ export class SidebarComponent {
   ]
 
   logOut(value:boolean){
-    console.log(value);
     this.authService.logOut();
   }
 

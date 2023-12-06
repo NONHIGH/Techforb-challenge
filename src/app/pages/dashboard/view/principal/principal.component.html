@@ -1,1 +1,30 @@
-<app-card/>
+<section class="Principal">
+  <app-header />
+  <h1>Inicio</h1>
+  <section class="Principal__CardInfo">
+    @if ( allCards !== null && allCards.length < 1) {
+    <app-card />
+    } @else{
+    <app-card
+      [dueDate]="allCards[0].dueDate"
+      [balance]="allCards[0].balance"
+      [headline]="allCards[0].headline"
+      [numberCard]="allCards[0].numberCard"
+    />
+    }
+    <app-chart
+      [chartWidth]="'386'"
+      [chartHeight]="'331'"
+      [chartType]="'spline'"
+      [chartDataFormat]="'json'"
+      [chartDataSource]="chartData"
+    />
+    <app-chart
+      [chartWidth]="'386'"
+      [chartHeight]="'331'"
+      [chartType]="'spline'"
+      [chartDataFormat]="'json'"
+      [chartDataSource]="chartData"
+    />
+  </section>
+</section>
