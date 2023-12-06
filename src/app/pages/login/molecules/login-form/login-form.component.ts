@@ -17,7 +17,7 @@ import {
 export class LoginFormComponent {
   protected loginForm!: FormGroup;
 
-  @Output() form = new EventEmitter<FormGroup>(); 
+  @Output() form = new EventEmitter<FormGroup>();
 
   constructor(private readonly formBuilder: FormBuilder) {
     this.loginForm = this.formBuilder.group({
@@ -44,7 +44,9 @@ export class LoginFormComponent {
         [
           Validators.minLength(8),
           Validators.maxLength(40),
-          Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/),
+          Validators.pattern(
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+          ),
           Validators.required,
         ],
       ],

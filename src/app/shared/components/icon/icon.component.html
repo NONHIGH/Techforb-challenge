@@ -1,0 +1,13 @@
+<div class="Icon">
+  <img class="Icon__image" [src]="iconProps.image" [alt]="iconProps.imgName" />
+</div>
+<ul class="Submenu">
+  @for (item of iconProps.options; track $index) {
+  <li class="Submenu__item">
+    <a class="Submenu__item-link" [routerLink]="item.path">
+      <img [src]="item.icon" [alt]="item.label" />
+      <p>{{ item.label }}</p>
+    </a>
+  </li>
+  }
+</ul>

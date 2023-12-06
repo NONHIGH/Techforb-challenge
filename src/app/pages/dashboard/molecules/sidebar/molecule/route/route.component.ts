@@ -7,7 +7,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterLink, RouterLinkActive],
   template: `
-    <a class="Container" [routerLink]="path ? path : '/dashboard'" routerLinkActive="onRoute" [routerLinkActiveOptions]="{exact: true}" (click)="emitAction()">
+    <a class="Container" [routerLink]="path ? path : ''" routerLinkActive="onRoute" [routerLinkActiveOptions]="{exact: true}" (click)="emitAction()">
       <img class="Container-icon" [src]="icon" [alt]="'navegar a '+label">
       {{ label }}
     </a>

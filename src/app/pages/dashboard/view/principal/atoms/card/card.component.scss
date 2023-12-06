@@ -9,8 +9,10 @@
   border: 1px solid $primary;
   padding: 2rem;
   min-width: 19rem;
+  max-width: 20rem;
   aspect-ratio: 17/9;
   width: auto;
+  
   display: grid;
   grid-template-areas:
     "balance balance balance cardNumber cardNumber"
@@ -27,7 +29,7 @@
     align-items: center;
     text-wrap: nowrap;
     height: 100%;
-    font-size: 1.225rem;
+    font-size: .8rem;
   }
   &__Data {
     grid-area: cardData;
@@ -36,6 +38,7 @@
     margin-top: 40%;
     &-headline,
     &-due {
+      font-size: .5rem;
       display: flex;
       flex-direction: column;
     }
@@ -59,7 +62,7 @@
     background-color: rgb(158, 44, 44);
     z-index: -1;
     height: 60%;
-    border-bottom-right-radius: 2.5rem;
+    border-bottom-right-radius: 5rem;
     width: 15%;
     bottom: 0;
     border-top-left-radius: 5rem;

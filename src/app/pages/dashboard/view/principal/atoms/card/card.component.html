@@ -1,21 +1,23 @@
 <div class="Card">
   <div class="Card__balance">
     <span>Mi saldo</span>
-    <h2>$12,345,789</h2>
+    <h2>{{ balance }}</h2>
   </div>
 
   <div class="Card__number">
-    <h3>**** **** **** 1234</h3>
+    <h3>{{ numberCard }}</h3>
   </div>
-
+  @if(!numberCard){
+  <p>Aún no tienes tarjetas registradas</p>
+  }
   <div class="Card__Data">
     <div class="Card__Data-headline">
       <span>Propietario</span>
-      <h3>Angel Bryan Luis Roman</h3>
+      <h3>{{ headline }}</h3>
     </div>
     <div class="Card__Data-due">
       <span>Vencimiento</span>
-      <h3>03/21</h3>
+      <h3>{{ dueDate }}</h3>
     </div>
   </div>
 

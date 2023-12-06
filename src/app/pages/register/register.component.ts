@@ -64,19 +64,20 @@ export class RegisterComponent {
       const username = this.registerForm.get(name)?.value;
       const lastname = this.registerForm.get(last_name)?.value;
       const emailu = this.registerForm.get(email)?.value;
+      
       const registerForm : AuthRegister = {
         document_number: numberDocument,
         email: emailu,
         password,
         name: username,
         lastname,
-        type_document:documentType
+        type_document:documentType.toUpperCase()
       }
       const res = this.authService.register(registerForm).subscribe({
         next: value => {
           const expirationCookie = new Date();
           expirationCookie.setDate(expirationCookie.getDate() + 7);
-          this.cookiesService.set("user", value+"", expirationCookie, '/', undefined, false, 'None');
+          this.cookiesService.set("user", value+"", expirationCookie, '/', undefined, false);
           this.router.navigate(['/dashboard']);
       },
         error: err => {

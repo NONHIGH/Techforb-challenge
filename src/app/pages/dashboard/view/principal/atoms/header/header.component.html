@@ -1,0 +1,18 @@
+<header class="Principal__Header">
+  <nav class="Principal__Header-navbar">
+    <input
+      type="search"
+      placeholder="Busca aquí"
+      name="searchBar"
+      class="Principal__Header-navbar-Search"
+    />
+    <ul class="Principal__Header-navbar-list">
+      @for (icon of icons; track icon.image) {
+      <li class="Principal__Header-navbar-list-item">
+        <app-icon [iconProps]="icon" />
+      </li>
+      }
+    </ul>
+    <span>{{ user?.name }}</span>
+  </nav>
+</header>
