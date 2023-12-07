@@ -10,8 +10,7 @@ import { UserDTO } from '../interfaces/UserDTO.interface';
 export class UserService {
   private apiBackend = environment.apiBackend;
 
-  private usuarioSubject: BehaviorSubject<UserDTO | null> =
-    new BehaviorSubject<UserDTO | null>(null);
+  private usuarioSubject: BehaviorSubject<UserDTO | null> = new BehaviorSubject<UserDTO | null>(null);
   usuario$: Observable<UserDTO | null> = this.usuarioSubject.asObservable();
 
   constructor(private readonly HttpClient: HttpClient) {}

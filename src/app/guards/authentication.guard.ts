@@ -3,11 +3,8 @@ import {Router } from '@angular/router';
 export const authenticationGuard: CanActivateFn = (route, state) => {
   
   const cookie = document.cookie;
-  console.log(cookie);
   
     const hasLogged = cookie.includes('session');
-    
-    console.log(hasLogged);
     
     const router  = new Router();
     if (hasLogged) {

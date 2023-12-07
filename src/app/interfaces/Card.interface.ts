@@ -7,6 +7,7 @@ export interface Card {
 }
 
 export interface CardDTO {
+  id: number;
   balance: number;
   dueDate: Date;
   headline: string;

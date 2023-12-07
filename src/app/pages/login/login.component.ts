@@ -39,6 +39,7 @@ export class LoginComponent  {
           expirationCookie.setDate(expirationCookie.getDate() + 7);
           this.cookiesService.set("session", value+"", expirationCookie, '/');
           this.router.navigate(['/dashboard']);
+          return 
       },
         error: err => {
           const status = err.status;

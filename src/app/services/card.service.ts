@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../../environments/environment.prod';
-import { BehaviorSubject, Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map, throwError } from 'rxjs';
 import { Card } from '../interfaces/Card.interface';
 import { UserService } from './user.service';
 
@@ -11,9 +11,7 @@ import { UserService } from './user.service';
 export class CardService {
   private apiBackend = environment.apiBackend + 'api/card';
   protected userId: number | null = null;
-  private cardsSubject: BehaviorSubject<any | null> = new BehaviorSubject<
-    any | null
-  >([]);
+  private cardsSubject: BehaviorSubject<any | null> = new BehaviorSubject<any | null>([]);
 
   allcards$: Observable<any | null> = this.cardsSubject.asObservable();
 
@@ -56,7 +54,13 @@ export class CardService {
           console.log(value, 'mensaje del backend al crear la tarjeta');
 
           return value;
+        }),
+        catchError((error: HttpErrorResponse)=>{
+          const errorMessage = error.error.message || 'Error desconocido al guardar la tarjeta';
+          alert(errorMessage)
+          return errorMessage;
         })
+
       );
   }
 }

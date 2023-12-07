@@ -40,15 +40,15 @@ export class FormCardComponent {
   onSubmit(): void {
 
       const newCard : Card = this.cardForm.value;
-      console.log(newCard);
+
       newCard.dueDate += "-01";
       
       this.cardService.addNewCard(newCard).subscribe(
-        (value)=>{
-          return value
+        (response)=>{
+          
         }
       )
-      console.log(newCard);
+      console.log(newCard, "new Ard");
   }
 
 }

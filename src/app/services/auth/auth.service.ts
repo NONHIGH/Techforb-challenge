@@ -48,8 +48,15 @@ export class AuthService {
   }
 
   logOut(){
-    this.cookiesService.delete("user");
-    this.routerNavigation.navigate(['/login'])
+    return this.httpClient.delete(`${this.urlBack}auth/logout`, {withCredentials: true})
+    .pipe(
+      map((response:any)=>{
+          // this.cookiesService.delete("session");
+          console.log(response);
+          return response
+        })
+      )
+
   }
 
 }

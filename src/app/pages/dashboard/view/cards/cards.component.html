@@ -1,3 +1,37 @@
-<app-form-card
-    [showForm]="true"
-/>
+<section class="SectionCards">
+  <header class="SectionCards__Header"><h1>Tarjetas</h1></header>
+  <ul class="SectionCards__List">
+    @for (card of allCards; track card.id) {
+    <li class="SectionCards__List-item">
+      <app-card
+        [balance]="card.balance"
+        [dueDate]="card.dueDate"
+        [numberCard]="card.numberCard"
+        [headline]="card.headline"
+      />
+    </li>
+
+    } @empty {
+    <li class="SectionCards__List-empty">
+      <span class="SectionCards__List-empty-container">
+        Usted no cuenta con tarjetas. ¿Quiere agregar alguna?
+        <button
+          (click)="openForm(isOpenForm)"
+          class="SectionCards__List-empty-button"
+        >
+          {{ openOrClose }}
+        </button>
+      </span>
+    </li>
+    }
+    @if(allCards.length >= 1){
+      <li class="SectionCards__List-item">
+        <div class="addNewCard" (click)="openForm(isOpenForm)">
+          <img [src]="isOpenForm ? '../../../../../assets/svg/math-minus.svg': '../../../../../assets/svg/math.svg' " alt="addNewCard" />
+        </div>
+      </li>
+      }
+  </ul>
+  
+  <app-form-card [showForm]="isOpenForm" />
+</section>
