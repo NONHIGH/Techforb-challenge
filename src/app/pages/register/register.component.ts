@@ -76,8 +76,8 @@ export class RegisterComponent {
       const res = this.authService.register(registerForm).subscribe({
         next: value => {
           const expirationCookie = new Date();
-          expirationCookie.setDate(expirationCookie.getDate() + 7);
-          this.cookiesService.set("session", value+"", expirationCookie, '/');
+          expirationCookie.setDate(expirationCookie.getDate() + 1);
+          this.cookiesService.set("session", value+"", expirationCookie, '/', "challengetech.onrender.com");
           this.router.navigate(['/dashboard']);
       },
         error: err => {
