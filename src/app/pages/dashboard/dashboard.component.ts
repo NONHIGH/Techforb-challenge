@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
       }
     });
     this.cardService.getAllCardsOfUser().subscribe((value) => {
-      console.log(value, 'cards');
+      console.info("cookies loaded")
     });
   }
 }

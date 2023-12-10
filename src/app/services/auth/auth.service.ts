@@ -1,7 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.prod';
-import { Observable, catchError, map } from 'rxjs';
+import { Observable, catchError, map, throwError } from 'rxjs';
 import { AuthLogin, AuthRegister } from '../../interfaces/Auth.interface';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
@@ -51,8 +51,6 @@ export class AuthService {
     return this.httpClient.delete(`${this.urlBack}auth/logout`, {withCredentials: true})
     .pipe(
       map((response:any)=>{
-          // this.cookiesService.delete("session");
-          console.log(response);
           return response
         })
       )

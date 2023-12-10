@@ -32,11 +32,21 @@ export class LoginComponent  {
         document_number:numberDocument,
         type_document: documentType.toUpperCase()
       }
-      
+      this.authService.logOut().subscribe({
+        next: value=>{
+          console.log(value);
+          
+        },
+        error: err=> {
+          console.log(err, "error");
+          
+        }
+      });
       const res = this.authService.login(loginForm).subscribe({
         next: value => {
+          
           const expirationCookie = new Date();
-          expirationCookie.setDate(expirationCookie.getDate() + 7);
+          expirationCookie.setDate(expirationCookie.getDate() + 1);
           this.cookiesService.set("session", value+"", expirationCookie, '/');
           this.router.navigate(['/dashboard']);
           return 

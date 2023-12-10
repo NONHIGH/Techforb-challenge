@@ -70,8 +70,7 @@ export class SidebarComponent {
   logOut(value:boolean){
     this.authService.logOut().subscribe(
       (value)=>{
-        alert(value?.message)
-        
+        console.log(value);
       }
     )
     ;
