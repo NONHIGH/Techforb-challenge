@@ -53,7 +53,8 @@ export class AuthService {
     return this.httpClient.delete(`${this.urlBack}auth/logout`, {withCredentials: true})
     .pipe(
       map((response:any)=>{
-        this.toastrService.info("Cerrando sesión", "LogOut")
+        this.toastrService.info("Cerrando sesión", "LogOut");
+        this.cookiesService.delete('session');
           return response
         })
       )
