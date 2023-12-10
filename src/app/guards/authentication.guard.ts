@@ -16,8 +16,9 @@ export const authenticationGuard: CanActivateFn = (route, state) => {
   const token = cookieService.get('session');
   const hasLogged = cookie.includes('session');
   if (token == 'undefined') {
-    cookieService.delete('session');
-    authService.logOut().subscribe((value: any)=>console.log(value))
+    authService
+      .logOut()
+      .subscribe((value: any) => console.log(value, 'limpiando cookies'));
   }
   const router = new Router();
   if (hasLogged) {
@@ -27,8 +28,8 @@ export const authenticationGuard: CanActivateFn = (route, state) => {
       if (tokenDecoded?.exp) {
         if (tokenDecoded.exp < new Date().getTime() / 1000) {
           authService.logOut().subscribe((response) => {
-            cookieService.delete('session');
             toastService.error(response?.message, 'Sesión expirada');
+            console.log(response);
             router.navigate(['/login']);
           });
         }
