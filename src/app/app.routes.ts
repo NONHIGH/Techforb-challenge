@@ -8,7 +8,7 @@ import { authenticationGuard } from './guards/authentication.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent, canActivate: [authenticationGuard] },
   {
     path: 'dashboard',
     component: DashboardComponent,

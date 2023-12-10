@@ -1,5 +1,8 @@
+@import "../../../../styles/base.scss";
 .Icon{
     display: flex;
+    background: $white-1;
+    border-radius: 50%;
     &__image{
         border-radius: 50%;
         border: 1px solid grey;

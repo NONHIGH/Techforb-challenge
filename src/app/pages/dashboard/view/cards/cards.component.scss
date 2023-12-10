@@ -1,0 +1,54 @@
+@import "../../../../../styles/base.scss";
+
+.SectionCards{
+    display: grid;
+
+    &__Header{
+        
+    }
+
+    &__List{
+        margin: 0;
+        padding: 0;
+        background: $white-1;
+        padding: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        gap: 3rem;
+        justify-content: space-around;
+        &-item{
+            
+            .addNewCard{
+                border: 1px solid $primary-1;
+                border-radius: .5rem;
+                width: 16rem;
+                height: 16rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+        &-empty{
+
+            &-button{
+                background-color: $primary-1;
+                color: $white-1;
+                padding: 1rem;
+                border: none;
+                border-top-left-radius: 11rem;
+                cursor: pointer;
+                transition: transform .5s;
+                &:hover{
+                    transform: scale(1.03);
+                }
+            }
+        }
+    }
+    
+}

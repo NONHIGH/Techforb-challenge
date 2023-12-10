@@ -15,7 +15,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styles: `
   @import "../../../../../../../styles/base.scss";
   .Container {
-    margin-left:3rem;
+    margin-left:1rem;
     display: flex;
     align-items:center;
     gap: 1rem;

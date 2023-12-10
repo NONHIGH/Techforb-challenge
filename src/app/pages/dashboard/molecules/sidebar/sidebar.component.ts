@@ -4,6 +4,7 @@ import { RouteComponent } from './molecule/route/route.component';
 import { Route } from '../../../../interfaces/route.interface';
 import { AuthService } from '../../../../services/auth/auth.service';
 import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -18,7 +19,8 @@ export class SidebarComponent {
 
   constructor(
     private readonly authService: AuthService,
-    private readonly cookies: CookieService
+    // private readonly cookies: CookieService,
+    private readonly routerNavigation: Router
   ){
   }
     
@@ -66,7 +68,12 @@ export class SidebarComponent {
   ]
 
   logOut(value:boolean){
-    this.authService.logOut();
+    this.authService.logOut().subscribe(
+      (value)=>{
+        console.log(value);
+      }
+    )
+    ;
   }
 
   getIconByName(name_icon: string):string{
