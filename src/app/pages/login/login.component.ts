@@ -32,16 +32,6 @@ export class LoginComponent  {
         document_number:numberDocument,
         type_document: documentType.toUpperCase()
       }
-      this.authService.logOut().subscribe({
-        next: value=>{
-          console.log(value);
-          
-        },
-        error: err=> {
-          console.log(err, "error");
-          
-        }
-      });
       const res = this.authService.login(loginForm).subscribe({
         next: value => {
           

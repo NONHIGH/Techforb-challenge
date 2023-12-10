@@ -5,6 +5,7 @@ import { Observable, catchError, map, throwError } from 'rxjs';
 import { AuthLogin, AuthRegister } from '../../interfaces/Auth.interface';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,8 @@ export class AuthService {
   constructor(
     private readonly httpClient: HttpClient,
     private readonly cookiesService: CookieService,
-    private readonly routerNavigation: Router
+    private readonly routerNavigation: Router,
+    private readonly toastrService:ToastrService
     ) {}
   urlBack: string = environment.apiBackend || 'http://localhost:8080/';
 
@@ -51,6 +53,7 @@ export class AuthService {
     return this.httpClient.delete(`${this.urlBack}auth/logout`, {withCredentials: true})
     .pipe(
       map((response:any)=>{
+        this.toastrService.info("Cerrando sesión", "LogOut")
           return response
         })
       )
