@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { CardService } from '../../../../../services/card.service';
 import { Card } from '../../../../../interfaces/Card.interface';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-form-card',
@@ -23,7 +24,9 @@ export class FormCardComponent {
 
   constructor(
     private readonly formBuilder: FormBuilder,
-    private readonly cardService: CardService
+    private readonly cardService: CardService,
+    private readonly toastrService: ToastrService,
+
   ) {
     this.cardForm = this.formBuilder.group({
     dueDate: ['', [Validators.required, Validators.pattern(/^(19|20)\d{2}-(0[1-9]|1[0-2])$/)]],
@@ -43,12 +46,21 @@ export class FormCardComponent {
 
       newCard.dueDate += "-01";
       
-      this.cardService.addNewCard(newCard).subscribe(
-        (response)=>{
+      this.cardService.addNewCard(newCard).subscribe({
+        next: response => {
+          // console.log(response);
+          this.cardService.getAllCardsOfUser().subscribe({
+            next: allCards => {
+              this.toastrService.info("Datos actualizados");
+            }
+          })
+          return ;
+        },
+        error: err => {
+          console.log(err);
           
         }
-      )
-      console.log(newCard, "new Ard");
+      })
   }
 
 }

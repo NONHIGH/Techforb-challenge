@@ -23,6 +23,9 @@ export class PrincipalComponent {
     private readonly cardService: CardService
   ) {
     this.cardService.allcards$.subscribe((value) => {
+      if(value == null){
+        return 
+      }
       this.allCards = value;
     });
   }

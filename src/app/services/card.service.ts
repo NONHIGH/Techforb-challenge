@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 export class CardService {
   private apiBackend = environment.apiBackend + 'api/card';
   protected userId: number | null = null;
-  private cardsSubject: BehaviorSubject<any | null> = new BehaviorSubject<any | null>([]);
+  private cardsSubject: BehaviorSubject<any | null> = new BehaviorSubject<any | null>(null);
 
   allcards$: Observable<any | null> = this.cardsSubject.asObservable();
 
@@ -60,9 +60,9 @@ export class CardService {
           return response;
         }),
         catchError((error: HttpErrorResponse)=>{
-          const errorMessage = error.error.message || 'Error desconocido al guardar la tarjeta';
-          alert(errorMessage)
-          return errorMessage;
+          const message = error.error?.message;
+          this.toastrService.error(message, "Tarjeta");
+          return message;
         })
 
       );

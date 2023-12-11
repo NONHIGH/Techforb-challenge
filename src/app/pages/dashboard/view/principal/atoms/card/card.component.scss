@@ -22,6 +22,7 @@
 
   &__balance {
     grid-area: balance;
+    max-width: 3rem;
   }
   &__number {
     grid-area: cardNumber;
@@ -49,19 +50,21 @@
 
   &__bar-1 {
     position: absolute;
-    background-color: rgb(161, 41, 41);
-    z-index: -1;
+    background-color: rgb(140, 137, 210);
+    z-index: 1;
     height: 50%;
     width: 10%;
+    opacity: .1;
     bottom: 0;
     border-top-left-radius: 3.85rem;
     right: 15%;
   }
   &__bar-2 {
     position: absolute;
-    background-color: rgb(158, 44, 44);
-    z-index: -1;
+    background-color: rgb(105 104 127);
+    z-index: 1;
     height: 60%;
+    opacity: .3;
     border-bottom-right-radius: 5rem;
     width: 15%;
     bottom: 0;
@@ -73,10 +76,10 @@
   &__circle {
     display: flex;
     width: 20%;
-    height: 20%;
+    height: 15%;
     position: absolute;
-    top: 5%;
-    right: 5%;
+    top: 9%;
+    right: 9%;
     &-1,
     &-2 {
       width: 100%;

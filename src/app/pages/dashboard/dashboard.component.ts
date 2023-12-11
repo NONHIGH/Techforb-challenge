@@ -21,6 +21,14 @@ export class DashboardComponent implements OnInit {
     private readonly cardService: CardService
   ) {}
   ngOnInit(): void {
+    this.cardService.allcards$.subscribe((value)=>{
+      if(value == null){
+        this.cardService.getAllCardsOfUser().subscribe((value) => {
+          console.info("Data loaded");
+          
+        });
+      }
+    })
     this.userService.usuario$.subscribe((user) => {
       this.user = user;
       if (user == null) {
@@ -29,8 +37,7 @@ export class DashboardComponent implements OnInit {
         });
       }
     });
-    this.cardService.getAllCardsOfUser().subscribe((value) => {
-      console.info("cookies loaded")
-    });
+
+
   }
 }

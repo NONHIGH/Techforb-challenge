@@ -20,6 +20,9 @@ export class CardsComponent {
   ){
     this.cardService.allcards$.subscribe(
       (value)=>{
+        if(value == null){
+          return;
+        }
         this.allCards = value;
       }
     )
